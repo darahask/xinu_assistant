@@ -211,7 +211,8 @@ SHELL_CFILES =                                                                  
 	xsh_devdump.c    xsh_echo.c       xsh_exit.c       xsh_help.c           \
 	xsh_kill.c       xsh_memdump.c    xsh_memstat.c    xsh_netinfo.c        \
 	xsh_ping.c       xsh_ps.c         xsh_sleep.c      xsh_todo.c           \
-	xsh_udpdump.c    xsh_udpecho.c    xsh_udpserver.c  xsh_uptime.c   
+	xsh_udpdump.c    xsh_udpecho.c    xsh_udpserver.c  xsh_uptime.c   		\
+	xsh_player.c
 
 SRC_CFILES  += ${SHELL_CFILES}
 SHELL_CFULL += ${SHELL_CFILES:%=../shell/%}
@@ -723,6 +724,8 @@ binaries/xsh_sleep.o:      ../shell/xsh_sleep.c
 	${CC} ${CFLAGS} -o binaries/xsh_sleep.o ../shell/xsh_sleep.c
 binaries/xsh_todo.o:       ../shell/xsh_todo.c
 	${CC} ${CFLAGS} -o binaries/xsh_todo.o ../shell/xsh_todo.c
+binaries/xsh_player.o:       ../shell/xsh_player.c
+	${CC} ${CFLAGS} -o binaries/xsh_player.o ../shell/xsh_player.c
 binaries/xsh_udpdump.o:    ../shell/xsh_udpdump.c
 	${CC} ${CFLAGS} -o binaries/xsh_udpdump.o ../shell/xsh_udpdump.c
 binaries/xsh_udpecho.o:    ../shell/xsh_udpecho.c
