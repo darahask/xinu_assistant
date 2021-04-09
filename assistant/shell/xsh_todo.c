@@ -65,6 +65,10 @@ shellcmd xsh_todo(int nargs, char * args[]) {
 
     }
 
+    if(nargs >= 3 && strcnp("del", args[1],3) == 0) {
+      printf("\nDelete %s has been deleted...\n",args[nargs-1]);
+    }
+
     return 0;
 }
 
