@@ -46,32 +46,19 @@ shellcmd xsh_player(int nargs, char * args[]) {
 	// FILE    *playerptr;       /* Todo file db pointer */
 
 
-
-	/* For argument '--help', emit help about the 'cat' command	*/
-
-	if (nargs == 2 && strncmp(args[1], "--help", 7) == 0) {
-		printf("play <finename>\n");
-		printf("pause (this will pause current running file) \n");
-		// printf("\twrites contents of files or stdin to stdout\n");
-		// printf("Options:\n");
-		// printf("\tfile...\tzero or more file names\n");
-		// printf("\t--help\t display this help and exit\n");
-		return 0;
+  if (nargs == 1 && strncmp(args[0], "stop", 4) == 0) {
+			printf("Player Stopped.\n",args[1]);
 	}
-	if (nargs == 1 && strncmp(args[0], "pause", 5) == 0) {
+
+  if (nargs == 1 && strncmp(args[0], "resume", 6) == 0) {
+			printf("Player resumed %s...\n",args[1]);
+	}
+
+  if (nargs == 1 && strncmp(args[0], "pause", 5) == 0) {
 		printf("Player Stopped\n");
 	}
-	if (nargs == 2) {
-		if (strncmp(args[0], "play", 4) == 0) {
-			printf("Player Started\n");
-		}
-	}
 
-
-
-
-
-	if (nargs == 1 && strncmp(args[0], "queue", 5) == 0) {
+  if (nargs == 1 && strncmp(args[0], "queue", 5) == 0) {
 		kprintf("\nSongs in Queue:\n\n");
 
 		// queue * tmp;
@@ -89,7 +76,21 @@ shellcmd xsh_player(int nargs, char * args[]) {
 			kprintf("%d. %s\n",i+1,queue[i]);
 		}
 	}
-
+  
+  /* For argument '--help', emit help about the 'cat' command	*/
+	if (nargs == 2 && strncmp(args[1], "--help", 7) == 0) {
+		printf("play <finename>\n");
+		printf("pause (this will pause current running file) \n");
+		// printf("\twrites contents of files or stdin to stdout\n");
+		// printf("Options:\n");
+		// printf("\tfile...\tzero or more file names\n");
+		// printf("\t--help\t display this help and exit\n");
+		return 0;
+	}
+	
+	if (nargs == 2 && strncmp(args[0], "play", 4) == 0) {
+			printf("Player Started song %s...\n",args[1]);
+	}
 
 	return 0;
 }
