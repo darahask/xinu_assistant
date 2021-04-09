@@ -19,6 +19,17 @@ shellcmd xsh_todo(int nargs, char * args[]) {
     // FILE    *todoptr;       /* Todo file db pointer */
     int id = 0;
 
+    /*
+    Every song can be of type of their transcripts.
+    eg.
+    0-3 "..."
+    3-4 "..."
+    4-6 "..."
+    .
+    .
+    etc.
+    */
+
 
     /* For argument '--help', emit help about the 'cat' command	*/
 
@@ -57,13 +68,31 @@ shellcmd xsh_todo(int nargs, char * args[]) {
     if (nargs == 3 && strncmp("complete", args[1], 8) == 0) {
         
         printf("\nTodo %s marked as completed...\n",args[2]);
-
-        // lfsopen( & devtab[17], "todo.txt", "w");
-        // lflputc( & devtab[17], 'k');
-        // lflwrite( & devtab[17], "kirtik", 6);
-        // lflclose( & devtab[17]);
-
     }
+    
+    if(nargs == 4 && strncmp(args[1] , "edit", 3) == 0){
+        char* todo_id = args[2];
+        char*  new_todo = args[3];
+        //Change the file .
+        //Find the todo with the given id and update it.
+        printf("Successfully edited the todo");
+    }
+
+
+
+
+    
+/* krithik */
+// #include <xinu.h>
+// #include <stdio.h>
+// #include <string.h>
+
+    // shellcmd xsh_todo(int nargs, char*args[]){
+    // lfsopen( & devtab[17], "todo.txt", "w");
+    // lflputc( & devtab[17], 'k');
+    // lflwrite( & devtab[17], "kirtik", 6);
+    // lflclose( & devtab[17]);
+    // }
 
     if(nargs >= 3 && strcnp("del", args[1],3) == 0) {
       printf("\nDelete %s has been deleted...\n",args[nargs-1]);

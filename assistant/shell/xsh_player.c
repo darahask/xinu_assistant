@@ -92,5 +92,16 @@ shellcmd xsh_player(int nargs, char * args[]) {
 			printf("Player Started song %s...\n",args[1]);
 	}
 
+	if (nargs == 3){
+		if(strncmp(args[1],"remove") == 0){
+			char * song_id = args[2];
+			//Remove the song file 
+			printf("Removed song wth id %s", song_id);
+		}
+
+	}
+
+	
+
 	return 0;
 }

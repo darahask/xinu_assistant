@@ -35,6 +35,7 @@ const	struct	cmdent	cmdtab[] = {
   {"stop",	FALSE,	xsh_player},
   {"resume",	FALSE,	xsh_player},
 	{"queue",	FALSE,	xsh_player},
+	{"player", FALSE, xsh_player}
 
 };
 
