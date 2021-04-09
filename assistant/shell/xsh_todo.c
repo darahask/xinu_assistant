@@ -75,17 +75,24 @@ shellcmd xsh_todo(int nargs, char * args[]) {
         char*  new_todo = args[3];
         //Change the file .
         //Find the todo with the given id and update it.
-
         printf("Successfully edited the todo");
     }
 
 
-        // lfsopen( & devtab[17], "todo.txt", "w");
-        // lflputc( & devtab[17], 'k');
-        // lflwrite( & devtab[17], "kirtik", 6);
-        // lflclose( & devtab[17]);
 
-    }
+
+    
+/* krithik */
+// #include <xinu.h>
+// #include <stdio.h>
+// #include <string.h>
+
+    // shellcmd xsh_todo(int nargs, char*args[]){
+    // lfsopen( & devtab[17], "todo.txt", "w");
+    // lflputc( & devtab[17], 'k');
+    // lflwrite( & devtab[17], "kirtik", 6);
+    // lflclose( & devtab[17]);
+    // }
 
     return 0;
 }
