@@ -93,7 +93,7 @@ shellcmd xsh_player(int nargs, char * args[]) {
 	}
 
 	if (nargs == 3){
-		if(strncmp(args[1],"remove") == 0){
+		if(strncmp(args[1],"remove",6) == 0){
 			char * song_id = args[2];
 			//Remove the song file 
 			printf("Removed song wth id %s", song_id);
