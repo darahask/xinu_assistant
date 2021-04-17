@@ -46,19 +46,31 @@ shellcmd xsh_player(int nargs, char * args[]) {
 	// FILE    *playerptr;       /* Todo file db pointer */
 
 
-  if (nargs == 1 && strncmp(args[0], "stop", 4) == 0) {
+    if (nargs == 2 && strncmp(args[1], "stop", 4) == 0) {
 			printf("Player Stopped.\n",args[1]);
 	}
 
-  if (nargs == 1 && strncmp(args[0], "resume", 6) == 0) {
-			printf("Player resumed %s...\n",args[1]);
-	}
+	/* For argument '--help', emit help about the 'cat' command	*/
 
-  if (nargs == 1 && strncmp(args[0], "pause", 5) == 0) {
+	if (nargs == 2 && strncmp(args[1], "--help", 7) == 0) {
+		printf("player play <finename>  --> Play the given song\n");
+		printf("player pause (this will pause current running file) \n");
+		printf("player stop \n");
+		printf("player remove <filename> -> Remove the song\n");
+		printf("player queue -> Show the current queue\n");
+
+		return 0;
+	}
+	if (nargs == 2 && strncmp(args[1], "pause", 5) == 0) {
 		printf("Player Stopped\n");
 	}
+	if (nargs == 3 && strncmp(args[1], "play", 4) == 0) {
+		char * song_id = args[2];
+		//Creaate a process to play the song
+		printf("Player Started song %s\n", song_id);
+	}
 
-  if (nargs == 1 && strncmp(args[0], "queue", 5) == 0) {
+	if (nargs == 2 && strncmp(args[1], "queue", 5) == 0) {
 		kprintf("\nSongs in Queue:\n\n");
 
 		// queue * tmp;
@@ -77,26 +89,11 @@ shellcmd xsh_player(int nargs, char * args[]) {
 		}
 	}
   
-  /* For argument '--help', emit help about the 'cat' command	*/
-	if (nargs == 2 && strncmp(args[1], "--help", 7) == 0) {
-		printf("play <finename>\n");
-		printf("pause (this will pause current running file) \n");
-		// printf("\twrites contents of files or stdin to stdout\n");
-		// printf("Options:\n");
-		// printf("\tfile...\tzero or more file names\n");
-		// printf("\t--help\t display this help and exit\n");
-		return 0;
-	}
-	
-	if (nargs == 2 && strncmp(args[0], "play", 4) == 0) {
-			printf("Player Started song %s...\n",args[1]);
-	}
-
 	if (nargs == 3){
 		if(strncmp(args[1],"remove",6) == 0){
 			char * song_id = args[2];
 			//Remove the song file 
-			printf("Removed song wth id %s", song_id);
+			printf("Removed song wth id %s\n", song_id);
 		}
 
 	}
