@@ -36,10 +36,8 @@ shellcmd xsh_todo(int nargs, char * args[]) {
     if (nargs == 2 && strncmp(args[1], "--help", 7) == 0) {
         printf("todo show - lists all the todos\n");
         printf("todo add <text> \n");
-        // printf("\twrites contents of files or stdin to stdout\n");
-        // printf("Options:\n");
-        // printf("\tfile...\tzero or more file names\n");
-        // printf("\t--help\t display this help and exit\n");
+        printf("todo complete <todo_id> \n");
+        printf("todo edit <todo_id> <new_text>\n");
         return 0;
     }
     if (nargs == 2 && strncmp(args[1], "show", 4) == 0) {
@@ -48,7 +46,7 @@ shellcmd xsh_todo(int nargs, char * args[]) {
         // fscanf(todoptr,"%s", line);
         // printf("%s", line);
         // fclose(todoptr);
-        printf("<i,dbmsassignment>");
+        printf("<i,dbmsassignment>\n");
     }
 
     if (nargs == 3 && strncmp(args[1], "add", 3) == 0) {
@@ -61,7 +59,7 @@ shellcmd xsh_todo(int nargs, char * args[]) {
         // strcat(line,", ");
         // strcat(line,argptr);
         // fprintf(todoptr,"%s", line);
-        printf("%s", "Sucessfully Added");
+        printf("Added %s\n",args[2] );
         // fclose(todoptr);
     }
 
@@ -75,7 +73,7 @@ shellcmd xsh_todo(int nargs, char * args[]) {
         char*  new_todo = args[3];
         //Change the file .
         //Find the todo with the given id and update it.
-        printf("Successfully edited the todo");
+        printf("Successfully edited the todo\n");
     }
 
 

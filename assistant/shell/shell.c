@@ -30,9 +30,6 @@ const	struct	cmdent	cmdtab[] = {
 	{"uptime",	FALSE,	xsh_uptime},
 	{"?",		FALSE,	xsh_help},
 	{"todo",	FALSE,	xsh_todo},
-	{"play",	FALSE,	xsh_player},
-	{"pause",	FALSE,	xsh_player},
-	{"queue",	FALSE,	xsh_player},
 	{"player", FALSE, xsh_player}
 
 };
