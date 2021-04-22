@@ -19,12 +19,14 @@ local	process startup(void);	/* Process to finish startup tasks	*/
 
 struct	procent	proctab[NPROC];	/* Process table			*/
 struct	sentry	semtab[NSEM];	/* Semaphore table			*/
+struct tcdata   tctable[MAX_TODOS];
 struct	memblk	memlist;	/* List of free memory blocks		*/
 
 /* Active system status */
 
 int	prcount;		/* Total number of live processes	*/
 pid32	currpid;		/* ID of currently executing process	*/
+int32 tcindex = 0;
 
 /* Control sequence to reset the console colors and cusor positiion	*/
 
