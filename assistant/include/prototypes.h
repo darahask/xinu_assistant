@@ -515,6 +515,15 @@ extern	syscall	send(pid32, umsg32);
 /* in file shell.c */
 extern 	process shell(did32);
 
+/* Custom process */
+extern process music(sid32);
+
+/* Custom process */
+extern process alarm(sid32);
+
+
+
+
 /* in file signal.c */
 extern	syscall	signal(sid32);
 
