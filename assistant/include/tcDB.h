@@ -1,4 +1,4 @@
-#define MAX_TODOS 100
+#define MAX_TODOS 101
 #define ACT 0
 #define DONE 1
 #define DEL 0

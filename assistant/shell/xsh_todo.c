@@ -6,6 +6,9 @@
  * xsh_todo - shell command to manage todo commands(create, delete, print, etc.)
  *------------------------------------------------------------------------
  */
+
+int32 cal[31][100];
+  int32 day;
 shellcmd xsh_todo(int nargs, char * args[]) {
 
     if (nargs == 2 && strncmp(args[1], "--help", 7) == 0) {
@@ -24,9 +27,27 @@ shellcmd xsh_todo(int nargs, char * args[]) {
         }
     }
 
+    if (nargs == 3 && strncmp(args[1], "show", 4) == 0 && strncmp(args[2], "cal", 3) == 0) {
+        int32 i = 0,j;
+        for(i=1;i<31;i++){
+            if(cal[i][0]==0)
+                continue;
+            
+            printf("\nDay %d: \n",i);
+            for(j=0;j<100;j++){
+                if(cal[i][j]==0)
+                    break;
+                if(tctable[cal[i][j]].deleted==NDEL)
+                    printf("ID:%d\tMessage:%s\n",cal[i][j],tctable[cal[i][j]].message);
+            }
+        }
+    }
+
+
     if ((nargs == 3 && strncmp(args[1], "add", 3) == 0) || (nargs == 4 && strncmp(args[1], "add", 3) == 0)) {
-        int32 i = 0;
-        for(i = 0; i < 100;i++){
+        int32 i = 0,j;
+      
+        for(i = 1; i < 101;i++){
             if(tctable[i].deleted == DEL){
                 strcpy(tctable[i].message,args[2]);
                 tctable[i].startTime = clktime;
@@ -35,8 +56,17 @@ shellcmd xsh_todo(int nargs, char * args[]) {
                     tctable[i].endTime = clktime + atoi(args[3]);
                 }
                 tctable[i].deleted = NDEL;
+                day = (tctable[i].endTime + 19)/20;
+                for(j=0;j<100;j++){
+                    if(cal[day][j]==0){
+                        cal[day][j]=i;
+                        break;
+                    }
+                }
                 break;
             }
+
+
         }
         printf("Added %s\n",args[2] );
     }
@@ -51,7 +81,25 @@ shellcmd xsh_todo(int nargs, char * args[]) {
         int id = atoi(args[2]);
         strcpy(tctable[id].message,args[3]);
         if(nargs == 5){
+            int32 j;
+            day = (tctable[id].endTime + 19)/20;
+            for(j=0;j<100;j++){
+                if(cal[day][j]==id){
+                    cal[day][j]=0;
+                    break;
+                }
+            }
             tctable[id].endTime = clktime + atoi(args[4]);
+            
+
+            day = (tctable[id].endTime + 19)/20;
+            
+            for(j=0;j<100;j++){
+                if(cal[day][j]==0){
+                    cal[day][j]=id;
+                    break;
+                }
+            }
         }
         printf("Successfully edited the todo\n");
     }
