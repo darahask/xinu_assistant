@@ -4,33 +4,47 @@
 
 int32 audio_buffer=0;
 
-process  write_to_audio_buffer (sid32 audio_system, int32 val)
+void  write_to_audio_buffer (sid32 audio_system, int32 val)
 {
   wait(audio_system);
   audio_buffer = val;
-  kprintf("audio - %d\n", val);
   signal(audio_system);
 }
 
-process alarm_(sid32 audio_system)
+void alarm_(sid32 audio_system)
 {
+  printf("in alarm");
   int i;
   for(i=1;i<=100;i+=5){
-    resume(create(write_to_audio_buffer, 8192, 20, "ala", 2, audio_system, i));
-    // printf("Alarm playing: %d\n",i);
+    resume(create(write_to_audio_buffer, 8192, 30, "ala", 2, audio_system, i));
   }
 }
 
-process music_(sid32 audio_system)
+void music_(sid32 audio_system)
 {
   int i;
   for(i=200;i<=400;i+=2){
     if(i==300){
       resume(create(alarm_, 8192, 120, "alarm", 1, audio_system));
     }
-    resume(create(write_to_audio_buffer, 8192, 20, "mus", 2, audio_system, i));
-    // printf("Music playing: %d\n",i);
+    resume(create(write_to_audio_buffer, 8192, 30, "mus", 2, audio_system, i));
   }
+}
+
+void audio_player(sid32 audio_system)
+{
+  printf("before audio\n");
+  while(1)
+  {
+    wait(audio_system);
+    if(audio_buffer)
+    {
+      printf("Audio - %d\n", audio_buffer);
+    }
+    signal(audio_system);
+  }
+    printf("after audio\n");
+
 }
 
 
@@ -44,9 +58,8 @@ process	main(void)
   sid32 audio_system = semcreate(1);
   kprintf("\nTesting the work!!\n");
 
-  
-  resume(create(music_,8192, 100, "music", 1, audio_system));
-	
+  resume(create(audio_player, 8192, 25, "audio_player", 1, audio_system));
+  resume(create(music_,8192, 25, "music", 1, audio_system));
   // resume(create(shell, 8192, 50, "shell", 1, CONSOLE));
 
 
