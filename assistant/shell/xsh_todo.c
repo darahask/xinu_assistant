@@ -19,7 +19,7 @@ shellcmd xsh_todo(int nargs, char * args[]) {
         int32 i = 0;
         for(i = 0; i < 100;i++){
             if(tctable[i].deleted == NDEL){
-                 printf("ID:%d Message:%s\n",i,tctable[i].message);
+                printf("ID:%d\tMessage:%s\tStartTime:%d\tEndTime:%d\n",i,tctable[i].message,tctable[i].startTime,tctable[i].endTime);
             }
         }
     }
@@ -32,7 +32,7 @@ shellcmd xsh_todo(int nargs, char * args[]) {
                 tctable[i].startTime = clktime;
                 tctable[i].endTime = clktime;
                 if(nargs == 4){
-                    tctable[i].endTime = clktime + args[3];
+                    tctable[i].endTime = clktime + atoi(args[3]);
                 }
                 tctable[i].deleted = NDEL;
                 break;

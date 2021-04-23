@@ -57,10 +57,24 @@ void printCalendar(int32 year,int32 month)
 
 
 shellcmd xsh_cal(int32 nargs, char *args[]){
-    if(nargs==3){
+    if(nargs==3 && strncmp(args[1], "events", 7) == 0){
  
-        int32 month = atoi(args[1]);
-         int32 year = atoi(args[2]);
+        
+		int32 i = 0;
+		int32 j=0;
+		uint32 t1=0;
+		kprintf("Events active on %s\n",args[2]);
+        for(i = 0; i < tcindex;i++){
+            t1 = atoi(args[2]);
+			if(args[2]>=tctable[i].startTime && args[2]<=tctable[i].endTime){
+				printf("ID:%d\tMessage:%s\tStartTime:%d\tEndTime:%d\n",i,tctable[i].message,tctable[i].startTime,tctable[i].endTime);
+			}
+        }
+        
+    }
+	else if(nargs==3){
+		int32 month = atoi(args[1]);
+		int32 year = atoi(args[2]);
 
         if(month<1 || month>12){
             kprintf("Enter valid month number\n");
@@ -68,13 +82,13 @@ shellcmd xsh_cal(int32 nargs, char *args[]){
         else{
             printCalendar(year,month-1);
         }
-        
-    }
+	}
 
     if (nargs == 2 && strncmp(args[1], "--help", 7) == 0) {
 		kprintf("Show monthly calendar\n");
         kprintf("Command format: cal <monthno.(1-12)> <year(YYYY)>\n");
 		return 0;
 	}
+	
     return 0;
 }
