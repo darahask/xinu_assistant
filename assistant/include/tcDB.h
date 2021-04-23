@@ -14,3 +14,6 @@ struct tcdata{
 
 extern struct tcdata tctable[];
 extern int32 tcindex;
+
+//alarmprocessID
+extern pid32 alarmid;

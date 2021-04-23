@@ -8,3 +8,7 @@ stop:
 	VBoxManage controlvm "backend" poweroff
 start:
 	VBoxManage startvm "backend" --type headless
+vmstart:
+	VBoxManage startvm "development-system" --type headless
+vmstop:
+	VBoxManage controlvm "development-system" poweroff

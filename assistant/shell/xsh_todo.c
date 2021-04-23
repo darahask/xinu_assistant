@@ -8,7 +8,8 @@
  */
 
 int32 cal[31][100];
-  int32 day;
+int32 day;
+
 shellcmd xsh_todo(int nargs, char * args[]) {
 
     if (nargs == 2 && strncmp(args[1], "--help", 7) == 0) {
@@ -23,6 +24,15 @@ shellcmd xsh_todo(int nargs, char * args[]) {
         for(i = 0; i < 100;i++){
             if(tctable[i].deleted == NDEL){
                 printf("ID:%d\tMessage:%s\tStartTime:%d\tEndTime:%d\n",i,tctable[i].message,tctable[i].startTime,tctable[i].endTime);
+            }
+        }
+    }
+
+    if (nargs == 2 && strncmp(args[1], "send", 4) == 0) {
+        int32 i = 0;
+        for(i = 0; i < 100;i++){
+            if(tctable[i].endTime >= clktime){
+                send(alarmid,i+1);
             }
         }
     }
