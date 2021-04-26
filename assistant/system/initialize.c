@@ -8,7 +8,7 @@
 extern	void	start(void);	/* Start of Xinu code			*/
 extern	void	*_end;		/* End of Xinu code			*/
 
-/* Function prototypes */
+/* Function prototypes *///alarmprocessID
 
 extern	void main(void);	/* Main is the first process created	*/
 static	void sysinit(); 	/* Internal system initialization	*/
@@ -27,7 +27,9 @@ struct	memblk	memlist;	/* List of free memory blocks		*/
 int	prcount;		/* Total number of live processes	*/
 pid32	currpid;		/* ID of currently executing process	*/
 int32 tcindex = 0;
-int alarmid;
+pid32 alarmid;
+sid32 audio_system;
+int32 audio_buffer;
 
 /* Control sequence to reset the console colors and cusor positiion	*/
 

@@ -66,8 +66,7 @@ shellcmd xsh_player(int nargs, char * args[]) {
 	}
 	if (nargs == 3 && strncmp(args[1], "play", 4) == 0) {
 		char * song_id = args[2];
-		//Creaate a process to play the song
-		printf("Player Started song %s\n", song_id);
+		resume(create(music, 8192, 25, "music", 1, audio_system));
 	}
 
 	if (nargs == 2 && strncmp(args[1], "queue", 5) == 0) {

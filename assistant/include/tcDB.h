@@ -17,3 +17,7 @@ extern int32 tcindex;
 
 //alarmprocessID
 extern pid32 alarmid;
+//semaphore 
+extern sid32 audio_system;
+//audio variable(for simulation)
+extern int32 audio_buffer;
