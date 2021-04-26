@@ -21,3 +21,5 @@ extern pid32 alarmid;
 extern sid32 audio_system;
 //audio variable(for simulation)
 extern int32 audio_buffer;
+
+extern pid32 musicprocid;
