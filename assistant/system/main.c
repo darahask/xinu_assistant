@@ -3,50 +3,52 @@
 #include <xinu.h>
 
 int32 audio_buffer=0;
+pid32 alaid;
 
-void  write_to_audio_buffer (sid32 audio_system, int32 val)
+void  print_audio_buffer ()
 {
-  wait(audio_system);
-  audio_buffer = val;
-  signal(audio_system);
+  while (1)
+  {
+    if(audio_buffer < 100)
+      printf("Audio: %d\n",audio_buffer);
+  }
 }
 
 void alarm_(sid32 audio_system)
 {
-  printf("in alarm");
   int i;
-  for(i=1;i<=100;i+=5){
-    resume(create(write_to_audio_buffer, 8192, 30, "ala", 2, audio_system, i));
+  wait(audio_system);
+  for(i=0;i<=100;i++){
+    audio_buffer = i;
   }
+  signal(audio_system);
 }
 
 void music_(sid32 audio_system)
 {
   int i;
-  for(i=200;i<=400;i+=2){
-    if(i==300){
-      resume(create(alarm_, 8192, 120, "alarm", 1, audio_system));
-    }
-    resume(create(write_to_audio_buffer, 8192, 30, "mus", 2, audio_system, i));
-  }
-}
-
-void audio_player(sid32 audio_system)
-{
-  printf("before audio\n");
-  while(1)
+  wait(audio_system);
+  // while(1){
+    
+  // }
+  for ( i = 500; i < 1000; i++)
   {
-    wait(audio_system);
-    if(audio_buffer)
-    {
-      printf("Audio - %d\n", audio_buffer);
-    }
-    signal(audio_system);
+    // sleepms(200);
+    audio_buffer = i;
   }
-    printf("after audio\n");
-
+  
+  signal(audio_system);
 }
 
+void csalarm(){
+  while(1){
+    if(clktime > 2){
+      resume(alaid);
+      printf("SWITCHED\n");
+      break;
+    }
+  }
+}
 
 process	main(void)
 {
@@ -54,16 +56,15 @@ process	main(void)
 
 	recvclr();
 
-
-  sid32 audio_system = semcreate(1);
+  sid32 audio_system = semcreate(2);
   kprintf("\nTesting the work!!\n");
 
-  resume(create(audio_player, 8192, 25, "audio_player", 1, audio_system));
   resume(create(music_,8192, 25, "music", 1, audio_system));
+  alaid = create(alarm_,8192, 50, "audio", 1, audio_system);
+  resume(create(csalarm,8192, 30, "cswitch", 0));
+  resume(create(print_audio_buffer,8192, 25, "printaudi", 0));
+
   // resume(create(shell, 8192, 50, "shell", 1, CONSOLE));
-
-
-  kprintf("\nIt worked maybe!!\n");
 
 	/* Wait for shell to exit and recreate it */
 
