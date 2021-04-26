@@ -5,6 +5,7 @@
 void alarmproc(){
   while (1)
   {
+    printf("Current PID: %d\n",currpid);
     umsg32 message = receive();
     if(message != 0){
       printf("Todo Alarm awakened %d\n",message-1);
@@ -19,6 +20,7 @@ process	main(void)
 	recvclr();
   resume(create(shell, 8192, 50, "shell", 1, CONSOLE));
   alarmid = create(alarmproc,8192,40,"alarmproc",0);
+  kprintf("Alarm Id created: %d\n",alarmid);
   resume(alarmid);
 
 	/* Wait for shell to exit and recreate it */
