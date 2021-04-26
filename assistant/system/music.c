@@ -11,10 +11,12 @@ void	music (sid32 audio_system, char* song)
   //   kprintf("music check -- %d\n",i);
   //   audio_buffer = i;
   // }
-  while (1)
+  // while (1)
+  for(i = 1; i < 100; i++)
   {
-    sleepms(1000);
-    kprintf("%s ", song);
+    sleepms(100);
+    kprintf("%s-%d ", song,i);
   }
   signal(audio_system);
+  musicprocid = NULL;
 }
