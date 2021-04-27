@@ -2,7 +2,7 @@
 
 #include <xinu.h>
 
-void	music (sid32 audio_system)
+void	music (sid32 audio_system, char* song)
 {
   int i;
   wait(audio_system);
@@ -11,10 +11,12 @@ void	music (sid32 audio_system)
   //   kprintf("music check -- %d\n",i);
   //   audio_buffer = i;
   // }
-  while (1)
+  // while (1)
+  for(i = 1; i < 100; i++)
   {
-    sleepms(1000);
-    kprintf("Seeti maaar ");
+    sleepms(100);
+    kprintf("%s-%d ", song,i);
   }
   signal(audio_system);
+  musicprocid = NULL;
 }

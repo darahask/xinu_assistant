@@ -30,6 +30,7 @@ int32 tcindex = 0;
 pid32 alarmid;
 sid32 audio_system;
 int32 audio_buffer;
+pid32 musicprocid;
 
 /* Control sequence to reset the console colors and cusor positiion	*/
 

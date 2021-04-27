@@ -516,7 +516,7 @@ extern	syscall	send(pid32, umsg32);
 extern 	process shell(did32);
 
 /* Custom process */
-extern void music(sid32);
+extern void music(sid32, char*);
 
 /* Custom process */
 extern void alarmproc();
