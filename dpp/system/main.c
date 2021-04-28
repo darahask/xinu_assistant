@@ -2,21 +2,50 @@
 
 #include <xinu.h>
 
-process	main(void)
+sid32 room;
+sid32 spoon[5];
+
+void philosopher( int );
+void eat(int);
+
+process main(void)
 {
-	/* Run the Xinu shell */
-
 	recvclr();
-	resume(create(shell, 8192, 50, "shell", 1, CONSOLE));
-
-	/* Wait for shell to exit and recreate it */
-
-	while (TRUE) {
-		receive();
-		sleepms(200);
-		kprintf("\n\nMain process recreating shell\n\n");
-		resume(create(shell, 4096, 20, "shell", 1, CONSOLE));
+	int i;
+	pid32 pid[5];
+	
+	room = semcreate(5);
+	
+	for(i=0;i<5;i++)
+		spoon[i] = semcreate(1);
+		
+	for(i=0;i<5;i++){
+		pid[i] = create(philosopher,4096,20,"phy",1,i);
 	}
+	for(i=0;i<5;i++)
+		resume(pid[i]);
+
 	return OK;
-    
+}
+
+void philosopher(int phil)
+{
+
+	wait(room);
+	kprintf("Philosopher %d has entered room\n",phil);
+	wait(spoon[phil]);
+	wait(spoon[(phil+1)%5]);
+
+	eat(phil);
+	sleep(2);
+	kprintf("Philosopher %d has finished eating\n",phil);
+
+	signal(spoon[(phil+1)%5]);
+	signal(spoon[phil]);
+	signal(room);
+}
+
+void eat(int phil)
+{
+	kprintf("Philosopher %d is eating\n",phil);
 }
