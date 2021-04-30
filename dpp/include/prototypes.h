@@ -14,14 +14,14 @@ extern	int32	arp_alloc(void);
 extern	void	arp_ntoh(struct arppacket *);
 extern	void	arp_hton(struct arppacket *);
 
-/* in file ascdate.c */
-extern	status	ascdate(uint32, char *);
+// /* in file ascdate.c */
+// extern	status	ascdate(uint32, char *);
 
 /* in file bufinit.c */
 extern	status	bufinit(void);
 
-/* in file chprio.c */
-extern	pri16	chprio(pid32, pri16);
+// /* in file chprio.c */
+// extern	pri16	chprio(pid32, pri16);
 
 /* in file clkupdate.S */
 extern	uint32	clkcount(void);
@@ -131,11 +131,11 @@ extern	syscall	getprio(pid32);
 /* in file getstk.c */
 extern	char	*getstk(uint32);
 
-/* in file gettime.c */
-extern	status	gettime(uint32 *);
+// /* in file gettime.c */
+// extern	status	gettime(uint32 *);
 
-/* in file getutime.c */
-extern	status	getutime(uint32 *);
+// /* in file getutime.c */
+// extern	status	getutime(uint32 *);
 
 /* in file halt.S */
 extern	void	halt(void);
