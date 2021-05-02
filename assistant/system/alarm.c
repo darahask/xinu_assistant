@@ -9,8 +9,8 @@ void alarmproc(){
         wait(audio_system);
         int i;
         for(i=0;i<=100;i++){
-            kprintf("check -- %d\n",i);
             audio_buffer = i;
+            kprintf("check -- %d\n",audio_buffer);
         }
         signal(audio_system);
     }
