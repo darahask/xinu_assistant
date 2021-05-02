@@ -30,14 +30,10 @@ shellcmd xsh_todo(int nargs, char * args[]) {
 
     if (nargs == 2 && strncmp(args[1], "send", 4) == 0) {
         int32 i = 0;
-            // while (1)
-            // {
-                sleepms(5000);
-                for(i = 0; i < 100;i++){
-                if(tctable[i].endTime <= clktime && tctable[i].endTime!=0){
-                    send(alarmid,i+1);
-                }
-            // }
+            for(i = 0; i < 100;i++){
+            if(tctable[i].endTime <= clktime && tctable[i].endTime!=0){
+                send(alarmid,i+1);
+            }
         }
     }
 

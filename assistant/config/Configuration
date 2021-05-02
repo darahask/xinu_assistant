@@ -55,28 +55,6 @@ ram:
 		-r ramread	-g ioerr	-p ioerr
 		-w ramwrite	-s ioerr	-n ioerr
 		-intr ionull
-
-/* type of a remote file system device */
-rfs:
-	on udp
-		-i rfsinit	-o rfsopen	-c ioerr
-		-r ioerr	-g ioerr	-p ioerr
-		-w ioerr	-s ioerr	-n rfscontrol
-		-intr ionull
-
-/* type of a remote file pseudo-device */
-rfl:
-	on rfs
-		-i rflinit	-o ioerr	-c rflclose
-		-r rflread	-g rflgetc	-p rflputc
-		-w rflwrite	-s rflseek	-n ioerr
-		-intr ionull
-
-/* type of a local file system master device */
-
-
-/* type of a local file pseudo-device */
-
 		
 /* type of namespace device */
 nam:
@@ -108,19 +86,6 @@ nam:
    
    /* Define a ram disk device */
    RAM0 is ram on mem
-
-   /* Define the remote file system device */
-
-   RFILESYS is rfs on udp
-
-   /* Define remote file pseudo-devices */
-
-
-
-   /* Define the local file system master device (one per system) */
-
-
-   /* Define local file pseudo-devices (multiple per system) */
 
    
 %%
