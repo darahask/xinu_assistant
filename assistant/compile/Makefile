@@ -37,7 +37,7 @@ REBUILDFLAGS	=	-s $(TOPDIR)/system  debug.c 	\
 			-s $(TOPDIR)/device/eth			\
 			-s $(TOPDIR)/device/rds			\
 			-s $(TOPDIR)/device/ram			\
-			-s $(TOPDIR)/device/lfs			\
+					\
 			-s $(TOPDIR)/device/rfs			\
 			-s $(TOPDIR)/net  'arp_dump*'  		\
 				'dhcp_dump*'  pxe.c		\

@@ -73,20 +73,10 @@ rfl:
 		-intr ionull
 
 /* type of a local file system master device */
-lfs:
-	on ram
-		-i lfsinit	-o lfsopen	-c ioerr
-		-r ioerr	-g ioerr	-p ioerr
-		-w ioerr	-s ioerr	-n ioerr
-		-intr ionull
+
 
 /* type of a local file pseudo-device */
-lfl:
-	on lfs
-		-i lflinit	-o ioerr	-c lflclose
-		-r lflread	-g lflgetc	-p lflputc
-		-w lflwrite	-s lflseek	-n lflcontrol
-		-intr ionull
+
 		
 /* type of namespace device */
 nam:
@@ -125,29 +115,13 @@ nam:
 
    /* Define remote file pseudo-devices */
 
-   RFILE0 is rfl on rfs
-   RFILE1 is rfl on rfs
-   RFILE2 is rfl on rfs
-   RFILE3 is rfl on rfs
-   RFILE4 is rfl on rfs
-   RFILE5 is rfl on rfs
-   RFILE6 is rfl on rfs
-   RFILE7 is rfl on rfs
-   RFILE8 is rfl on rfs
-   RFILE9 is rfl on rfs
+
 
    /* Define the local file system master device (one per system) */
 
-   LFILESYS is lfs on ram
 
    /* Define local file pseudo-devices (multiple per system) */
 
-   LFILE0 is lfl on lfs
-   LFILE1 is lfl on lfs
-   LFILE2 is lfl on lfs
-   LFILE3 is lfl on lfs
-   LFILE4 is lfl on lfs
-   LFILE5 is lfl on lfs
    
 %%
 

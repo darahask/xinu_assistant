@@ -138,52 +138,6 @@ struct	dentry	devtab[NDEVS] =
 	  (void *)rflgetc, (void *)rflputc, (void *)ioerr,
 	  (void *)0x0, (void *)ionull, 0 },
 
-/* LFILESYS is lfs */
-	{ 17, 0, "LFILESYS",
-	  (void *)lfsinit, (void *)lfsopen, (void *)ioerr,
-	  (void *)ioerr, (void *)ioerr, (void *)ioerr,
-	  (void *)ioerr, (void *)ioerr, (void *)ioerr,
-	  (void *)0x0, (void *)ionull, 0 },
 
-/* LFILE0 is lfl */
-	{ 18, 0, "LFILE0",
-	  (void *)lflinit, (void *)ioerr, (void *)lflclose,
-	  (void *)lflread, (void *)lflwrite, (void *)lflseek,
-	  (void *)lflgetc, (void *)lflputc, (void *)lflcontrol,
-	  (void *)0x0, (void *)ionull, 0 },
 
-/* LFILE1 is lfl */
-	{ 19, 1, "LFILE1",
-	  (void *)lflinit, (void *)ioerr, (void *)lflclose,
-	  (void *)lflread, (void *)lflwrite, (void *)lflseek,
-	  (void *)lflgetc, (void *)lflputc, (void *)lflcontrol,
-	  (void *)0x0, (void *)ionull, 0 },
-
-/* LFILE2 is lfl */
-	{ 20, 2, "LFILE2",
-	  (void *)lflinit, (void *)ioerr, (void *)lflclose,
-	  (void *)lflread, (void *)lflwrite, (void *)lflseek,
-	  (void *)lflgetc, (void *)lflputc, (void *)lflcontrol,
-	  (void *)0x0, (void *)ionull, 0 },
-
-/* LFILE3 is lfl */
-	{ 21, 3, "LFILE3",
-	  (void *)lflinit, (void *)ioerr, (void *)lflclose,
-	  (void *)lflread, (void *)lflwrite, (void *)lflseek,
-	  (void *)lflgetc, (void *)lflputc, (void *)lflcontrol,
-	  (void *)0x0, (void *)ionull, 0 },
-
-/* LFILE4 is lfl */
-	{ 22, 4, "LFILE4",
-	  (void *)lflinit, (void *)ioerr, (void *)lflclose,
-	  (void *)lflread, (void *)lflwrite, (void *)lflseek,
-	  (void *)lflgetc, (void *)lflputc, (void *)lflcontrol,
-	  (void *)0x0, (void *)ionull, 0 },
-
-/* LFILE5 is lfl */
-	{ 23, 5, "LFILE5",
-	  (void *)lflinit, (void *)ioerr, (void *)lflclose,
-	  (void *)lflread, (void *)lflwrite, (void *)lflseek,
-	  (void *)lflgetc, (void *)lflputc, (void *)lflcontrol,
-	  (void *)0x0, (void *)ionull, 0 }
 };

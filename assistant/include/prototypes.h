@@ -249,20 +249,20 @@ extern	devcall	lflseek(struct dentry *, uint32);
 /* in file lflwrite.c */
 extern	devcall	lflwrite(struct dentry *, char *, int32);
 
-/* in file lfscheck.c */
-extern	status	lfscheck(struct lfdir *);
+// /* in file lfscheck.c */
+// extern	status	lfscheck(struct lfdir *);
 
-/* in file lfscreate.c */
-extern  status  lfscreate(did32, ibid32, uint32);
+// /* in file lfscreate.c */
+// extern  status  lfscreate(did32, ibid32, uint32);
 
-/* in file lfsinit.c */
-extern	devcall	lfsinit(struct dentry *);
+// /* in file lfsinit.c */
+// extern	devcall	lfsinit(struct dentry *);
 
-/* in file lfsopen.c */
-extern	devcall	lfsopen(struct dentry *, char *, char *);
+// /* in file lfsopen.c */
+// extern	devcall	lfsopen(struct dentry *, char *, char *);
 
-/* in file lfsetup.c */
-extern	status	lfsetup(struct lflcblk *);
+// /* in file lfsetup.c */
+// extern	status	lfsetup(struct lflcblk *);
 
 /* in file lftruncate.c */
 extern	status	lftruncate(struct lflcblk *);
