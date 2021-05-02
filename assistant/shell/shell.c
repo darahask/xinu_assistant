@@ -10,7 +10,6 @@
 const	struct	cmdent	cmdtab[] = {
 	{"todo",	FALSE,	xsh_todo},
 	{"player", FALSE, xsh_player},
-	{"cal",	   FALSE, xsh_cal},
 	{"phil", FALSE, xsh_phil}
 };
 
