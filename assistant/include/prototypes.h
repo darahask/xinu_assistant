@@ -201,72 +201,6 @@ extern	syscall	kill(pid32);
 /* in file lexan.c */
 extern	int32	lexan(char *, int32, char *, int32 *, int32 [], int32 []);
 
-/* in file lfibclear.c */
-extern	void	lfibclear(struct lfiblk *, int32);
-
-/* in file lfibget.c */
-extern	void	lfibget(did32, ibid32, struct lfiblk *);
-
-/* in file lfibput.c */
-extern	status	lfibput(did32, ibid32, struct lfiblk *);
-
-/* in file lfdbfree.c */
-extern	status	lfdbfree(did32, dbid32);
-
-/* in file lfdballoc.c */
-extern	dbid32	lfdballoc(struct lfdbfree *);
-
-/* in file lfflush.c */
-extern	status	lfflush(struct lflcblk *);
-
-/* in file lfgetmode.c */
-extern	int32	lfgetmode(char *);
-
-/* in file lfiballoc.c */
-extern	ibid32	lfiballoc(void);
-
-/* in file lflclose.c */
-extern	devcall	lflclose(struct dentry *);
-
-/* in file lflcontrol.c */
-extern	devcall	lflcontrol(struct dentry *, int32, int32, int32);
-
-/* in file lflgetc.c */
-extern	devcall	lflgetc(struct dentry *);
-
-/* in file lflinit.c */
-extern	devcall	lflinit(struct dentry *);
-
-/* in file lflputc.c */
-extern	devcall	lflputc(struct dentry *, char);
-
-/* in file lflread.c */
-extern	devcall	lflread(struct dentry *, char *, int32);
-
-/* in file lflseek.c */
-extern	devcall	lflseek(struct dentry *, uint32);
-
-/* in file lflwrite.c */
-extern	devcall	lflwrite(struct dentry *, char *, int32);
-
-// /* in file lfscheck.c */
-// extern	status	lfscheck(struct lfdir *);
-
-// /* in file lfscreate.c */
-// extern  status  lfscreate(did32, ibid32, uint32);
-
-// /* in file lfsinit.c */
-// extern	devcall	lfsinit(struct dentry *);
-
-// /* in file lfsopen.c */
-// extern	devcall	lfsopen(struct dentry *, char *, char *);
-
-// /* in file lfsetup.c */
-// extern	status	lfsetup(struct lflcblk *);
-
-/* in file lftruncate.c */
-extern	status	lftruncate(struct lflcblk *);
-
 /* in file lpgetc.c */
 extern	devcall	lpgetc(struct dentry *);
 
@@ -384,34 +318,6 @@ extern	devcall	ramread(struct dentry *, char *, int32);
 /* in file ramwrite.c */
 extern	devcall	ramwrite(struct dentry *, char *, int32);
 
-/* in file rdsclose.c */
-extern	devcall	rdsclose(struct dentry *);
-
-/* in file rdscontrol.c */
-extern	devcall	rdscontrol(struct dentry *, int32, int32, int32);
-
-/* in file rdsinit.c */
-extern	devcall	rdsinit(struct dentry *);
-
-/* in file rdsopen.c */
-extern	devcall	rdsopen(struct dentry *, char *, char *);
-
-/* in file rdsread.c */
-extern	devcall	rdsread(struct dentry *, char *, int32);
-
-/* in file rdswrite.c */
-extern	devcall	rdswrite(struct dentry *, char *, int32);
-
-/* in file rdsbufalloc.c */
-extern	struct	rdbuff * rdsbufalloc(struct rdscblk *);
-
-/* in file rdscomm.c */
-extern	status	rdscomm(struct rd_msg_hdr *, int32, struct rd_msg_hdr *,
-		int32, struct rdscblk *);
-
-/* in file rdsprocess.c */
-extern	void	rdsprocess(struct rdscblk *);
-
 /* in file read.c */
 extern	syscall	read(did32, char *, uint32);
 
@@ -437,45 +343,6 @@ extern	void	restore(intmask);
 /* in file resume.c */
 extern	pri16	resume(pid32);
 
-/* in file rfsgetmode.c */
-extern	int32	rfsgetmode(char * );
-
-/* in file rflclose.c */
-extern	devcall	rflclose(struct dentry *);
-
-/* in file rfscontrol.c */
-extern	devcall	rfscontrol(struct dentry *, int32, int32, int32);
-
-/* in file rflgetc.c */
-extern	devcall	rflgetc(struct dentry *);
-
-/* in file rflinit.c */
-extern	devcall	rflinit(struct dentry *);
-
-/* in file rflputc.c */
-extern	devcall	rflputc(struct dentry *, char );
-
-/* in file rflread.c */
-extern	devcall	rflread(struct dentry *, char *, int32 );
-
-/* in file rflseek.c */
-extern	devcall	rflseek(struct dentry *, uint32 );
-
-/* in file rflwrite.c */
-extern	devcall	rflwrite(struct dentry *, char *, int32 );
-
-/* in file rfsndmsg.c */
-extern	status	rfsndmsg(uint16, char *);
-
-/* in file rfsinit.c */
-extern	devcall	rfsinit(struct dentry *);
-
-/* in file rfsopen.c */
-extern	devcall	rfsopen(struct dentry  *devptr, char *, char *);
-
-/* in file rfscomm.c */
-extern	int32	rfscomm(struct rf_msg_hdr *, int32,
-			struct rf_msg_hdr *, int32);
 /* in file seek.c */
 extern	syscall	seek(did32, uint32);
 

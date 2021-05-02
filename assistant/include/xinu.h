@@ -16,10 +16,6 @@
 #include <tty.h>
 #include <device.h>
 #include <interrupt.h>
-#include <file.h>
-#include <rfilesys.h>
-#include <rdisksys.h>
-#include <lfilesys.h>
 #include <ether.h>
 #include <net.h>
 #include <ip.h>
@@ -42,4 +38,3 @@
 #include <stdio.h>
 #include <string.h>
 #include <tcDB.h>
-#include <audio_system.h>
