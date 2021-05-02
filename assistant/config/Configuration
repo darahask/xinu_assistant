@@ -40,14 +40,6 @@ eth:
 		-w ethwrite	-s ioerr	-n ethcontrol
 		-intr ethdispatch
 
-/* type of a remote disk system device */
-rds:
-	on udp
-		-i rdsinit	-o rdsopen	-c rdsclose
-		-r rdsread	-g ioerr	-p ioerr
-		-w rdswrite	-s ioerr	-n rdscontrol
-		-intr ionull
-
 /* type of ram disk */
 ram:
 	on mem
@@ -80,9 +72,6 @@ nam:
 
    /* Define a namespace device */
    NAMESPACE is nam on top
-
-   /* Define a remote disk system device */
-   RDISK is rds on udp
    
    /* Define a ram disk device */
    RAM0 is ram on mem

@@ -47,13 +47,6 @@ struct	dentry	devtab[NDEVS] =
 	  (void *)ioerr, (void *)ioerr, (void *)ioerr,
 	  (void *)0x0, (void *)ioerr, 0 },
 
-/* RDISK is rds */
-	{ 4, 0, "RDISK",
-	  (void *)rdsinit, (void *)rdsopen, (void *)rdsclose,
-	  (void *)rdsread, (void *)rdswrite, (void *)ioerr,
-	  (void *)ioerr, (void *)ioerr, (void *)rdscontrol,
-	  (void *)0x0, (void *)ionull, 0 },
-
 /* RAM0 is ram */
 	{ 5, 0, "RAM0",
 	  (void *)raminit, (void *)ramopen, (void *)ramclose,
