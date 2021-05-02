@@ -50,7 +50,6 @@ process	shell (
 	int32	ntok;			/* Number of tokens on line	*/
 	pid32	child;			/* Process ID of spawned child	*/
 	bool8	backgnd;		/* Run command in background?	*/
-	char	*outname, *inname;	/* Pointers to strings for file	*/
 					/*   names that follow > and <	*/
 	did32	stdinput, stdoutput;	/* Descriptors for redirected	*/
 					/*   input and output		*/
@@ -133,46 +132,6 @@ process	shell (
 
 		/* Check for input/output redirection (default is none) */
 
-		outname = inname = NULL;
-		if ( (ntok >=3) && ( (toktyp[ntok-2] == SH_TOK_LESS)
-				   ||(toktyp[ntok-2] == SH_TOK_GREATER))){
-			if (toktyp[ntok-1] != SH_TOK_OTHER) {
-				fprintf(dev,"%s\n", SHELL_SYNERRMSG);
-				continue;
-			}
-			if (toktyp[ntok-2] == SH_TOK_LESS) {
-				inname =  &tokbuf[tok[ntok-1]];
-			} else {
-				outname = &tokbuf[tok[ntok-1]];
-			}
-			ntok -= 2;
-			tlen = tok[ntok];
-		}
-
-
-		if ( (ntok >=3) && ( (toktyp[ntok-2] == SH_TOK_LESS)
-				   ||(toktyp[ntok-2] == SH_TOK_GREATER))){
-			if (toktyp[ntok-1] != SH_TOK_OTHER) {
-				fprintf(dev,"%s\n", SHELL_SYNERRMSG);
-				continue;
-			}
-			if (toktyp[ntok-2] == SH_TOK_LESS) {
-				if (inname != NULL) {
-				    fprintf(dev,"%s\n", SHELL_SYNERRMSG);
-				    continue;
-				}
-				inname = &tokbuf[tok[ntok-1]];
-			} else {
-				if (outname != NULL) {
-				    fprintf(dev,"%s\n", SHELL_SYNERRMSG);
-				    continue;
-				}
-				outname = &tokbuf[tok[ntok-1]];
-			}
-			ntok -= 2;
-			tlen = tok[ntok];
-		}
-
 		/* Verify remaining tokens are type "other" */
 
 		for (i=0; i<ntok; i++) {
@@ -218,7 +177,7 @@ process	shell (
 		/* Handle built-in command */
 
 		if (cmdtab[j].cbuiltin) { /* No background or redirect. */
-			if (inname != NULL || outname != NULL || backgnd){
+			if (backgnd){
 				fprintf(dev, SHELL_BGERRMSG);
 				continue;
 			} else {
@@ -236,25 +195,6 @@ process	shell (
 				}
 			}
 			continue;
-		}
-
-		/* Open files and redirect I/O if specified */
-
-		if (inname != NULL) {
-			stdinput = open(NAMESPACE,inname,"ro");
-			if (stdinput == SYSERR) {
-				fprintf(dev, SHELL_INERRMSG, inname);
-				continue;
-			}
-		}
-		if (outname != NULL) {
-			stdoutput = open(NAMESPACE,outname,"w");
-			if (stdoutput == SYSERR) {
-				fprintf(dev, SHELL_OUTERRMSG, outname);
-				continue;
-			} else {
-				control(stdoutput, F_CTL_TRUNC, 0, 0);
-			}
 		}
 
 		/* Spawn child thread for non-built-in commands */

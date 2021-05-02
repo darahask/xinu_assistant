@@ -47,14 +47,6 @@ ram:
 		-r ramread	-g ioerr	-p ioerr
 		-w ramwrite	-s ioerr	-n ioerr
 		-intr ionull
-		
-/* type of namespace device */
-nam:
-	on top
-		-i naminit 	-o namopen 	-c ioerr
-		-r ioerr 	-g ioerr 	-p ioerr
-		-w ioerr 	-s ioerr 	-n ioerr
-		-intr ioerr
 
 %%
 
@@ -69,9 +61,6 @@ nam:
 
    /* Physical Ethernet (raw packet transfer) */
    ETHER0 is eth   on e1000e csr 0 -irq 0 */
-
-   /* Define a namespace device */
-   NAMESPACE is nam on top
    
    /* Define a ram disk device */
    RAM0 is ram on mem
