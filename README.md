@@ -1,6 +1,6 @@
 # xinu_assistant
 
-- Implementation of Personal Digital Assistant (PDA) by modification of xinu to reflect on process synchronisation, Scheduling, deadlock management, Inter-process communication.
+- Implementation of Personal Digital Assistant (PDA) by modifing xinu to reflect on process synchronisation, Scheduling, deadlock management, Inter-process communication.
 
 ### Contributors
 
